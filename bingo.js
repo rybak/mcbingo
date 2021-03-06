@@ -575,6 +575,32 @@ function hideGoalExport()
 	$("#export").hide();
 }
 
+function copyBlobToClipboard(blob)
+{
+	// https://stackoverflow.com/a/59162806/1083697
+	try {
+		navigator.clipboard.write([
+			new ClipboardItem({
+				'image/png': blob
+			})
+		]);
+	} catch (error) {
+		console.error(error);
+	}
+}
+
+function screenshotSheet()
+{
+	// adapted from https://stackoverflow.com/a/24619118/1083697
+	html2canvas($("#bingo-section"), {
+            onrendered: function(canvas) {
+                canvas.toBlob(function(blob) {
+                    copyBlobToClipboard(blob);
+                });
+            }
+        });
+}
+
 // Made this a function for readability and ease of use
 function getRandomInt(min, max)
 {

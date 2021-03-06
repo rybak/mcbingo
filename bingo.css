@@ -326,6 +326,9 @@ html, body {
 .version-button {
 	width: 300px;
 }
+.screenshot-button {
+	width: 50px;
+}
 
 .options-button,
 .slider-holder,
@@ -417,7 +420,7 @@ input[type=range]::-ms-thumb:active {
 }
 
 .new-seed-button {
-	width: 382px;
+	width: 324px;
 	text-decoration: none;
 }
 
