@@ -589,16 +589,62 @@ function copyBlobToClipboard(blob)
 	}
 }
 
-function screenshotSheet()
+// https://stackoverflow.com/a/39914235/1083697
+function sleep(ms) {
+	return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function screenshotSheet()
 {
-	// adapted from https://stackoverflow.com/a/24619118/1083697
-	html2canvas($("#bingo-section"), {
-            onrendered: function(canvas) {
-                canvas.toBlob(function(blob) {
-                    copyBlobToClipboard(blob);
-                });
-            }
-        });
+	// await navigator.clipboard.writeText("OLOLOLOL");
+
+	// toggleStreamerMode();
+	// await sleep(1000);
+	// html2canvas(document.body).then(async function(canvas) {
+	// 	await sleep(1000);
+	// 	canvas.toBlob(blob =>
+	// 		navigator.clipboard.write([
+	// 			new ClipboardItem({
+	// 				'image/png': blob
+	// 			})
+	// 		])
+	// 	);
+	// 	document.body.removeChild(canvas);
+	// });
+	// await sleep(5000);
+	// toggleStreamerMode();
+
+	// html2canvas(document.querySelector("#TEST")).then(canvas =>
+	// 	canvas.toBlob(blob =>
+	// 		navigator.clipboard.write([
+	// 			new ClipboardItem({
+	// 				'image/png': blob
+	// 			})
+	// 		])
+	// 	)
+	// );
+	toggleStreamerMode();
+	await sleep(500);
+	html2canvas(document.getElementById("bingo")).then(function(canvas) {
+		document.body.appendChild(canvas);
+		canvas.toBlob(blob =>
+			navigator.clipboard.write([
+				new ClipboardItem({
+					'image/png': blob
+				})
+			])
+		);
+	});
+	await sleep(2500);
+	toggleStreamerMode();
+	//  // adapted from https://stackoverflow.com/a/24619118/1083697
+	//  html2canvas($("#TEST"), {
+	//      onrendered: function(canvas) {
+	//          canvas.toBlob(function(blob) {
+	//              copyBlobToClipboard(blob);
+	//          });
+	//      }
+	//  });
 }
 
 // Made this a function for readability and ease of use
