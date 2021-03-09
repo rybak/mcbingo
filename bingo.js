@@ -16,6 +16,7 @@ var COLOUR_SELECTIONS = [
 var COLOURCOUNT = 1; // used as an index in COLOUR_SELECTIONS and COLOURCOUNTTEXT
 var COLOURCOUNTTEXT = [ "Green only", "Blue, Green, Red", "6 Colours"];
 var COLOURSYMBOLS = false;
+var DARK_MODE = false;
 const NEVER_HIGHLIGHT_CLASS_NAME = "greensquare";
 
 var hoveredSquare;
@@ -50,6 +51,7 @@ const TOOLTIP_TEXT_ATTR_NAME = "data-tooltiptext";
 const TOOLTIP_IMAGE_ATTR_NAME = "data-tooltipimg";
 const COLOUR_COUNT_SETTING_NAME = "bingoColourCount";
 const COLOUR_SYMBOLS_SETTING_NAME = "bingoColourSymbols";
+const DARK_MODE_SETTING_NAME = "bingoDarkMode";
 
 // Dropdown menu handling.
 $(document).click(function(event) {
@@ -283,6 +285,13 @@ function getSettingsFromLocalStorage()
 		// if not stored, then just use the default
 		updateColourCount();
 	}
+	const darkModeSetting = localStorage.getItem(DARK_MODE_SETTING_NAME);
+	if (darkModeSetting != null)
+	{
+		DARK_MODE = darkModeSetting == "true";
+		updateDarkMode();
+	}
+	console.log("load  DARK_MODE = " + DARK_MODE);
 }
 
 /*
@@ -483,6 +492,27 @@ function toggleColourSymbols(value)
 	pushNewLocalSetting(COLOUR_SYMBOLS_SETTING_NAME, COLOURSYMBOLS);	
 }
 
+function updateDarkMode()
+{
+	const darkModeClassName = "dark-mode";
+	const body = $("body");
+	if (DARK_MODE)
+	{
+		body.addClass(darkModeClassName);
+	}
+	else
+	{
+		body.removeClass(darkModeClassName);
+	}
+}
+
+function toggleDarkMode()
+{
+	DARK_MODE = !DARK_MODE;
+	updateDarkMode();
+	pushNewLocalSetting(DARK_MODE_SETTING_NAME, DARK_MODE);
+}
+
 function pushNewUrl()
 {
 	var hidden = HIDDEN ? "1" : "0";
@@ -499,6 +529,7 @@ function pushNewLocalSetting(name, value)
 	catch (ignored)
 	{
 	}
+	console.log("saved " + name + " = " + value.toString());
 }
 
 function getVersion(versionId)

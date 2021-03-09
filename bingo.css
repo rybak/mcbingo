@@ -36,6 +36,11 @@ html, body {
 	border-bottom: 5px solid;
 	margin-bottom: 10px;
 }
+.dark-mode #nav_section {
+	background-color: #141414;
+	border-color: #000;
+	box-shadow: 0px 10px 5px -10px #303030;
+}
 
 #nav_section h1 {
 	font-size: 4em;
@@ -51,6 +56,9 @@ html, body {
 	margin-right: auto;
 	-webkit-text-stroke-width: 1px;
 	-webkit-text-stroke-color: black;
+}
+.dark-mode #nav_section h1 {
+	color: #D8D8D8;
 }
 
 /* End Nav Bar */
@@ -80,6 +88,9 @@ html, body {
 	text-align:center;
 	display:none;
 }
+.dark-mode .stream-exit-text {
+	color: #FFF;
+}
 
 #bingo-section {
 	width: 700px;
@@ -88,6 +99,10 @@ html, body {
 	margin-right: auto;
 	background-color: #EBEBEB;
 	border: 4px solid;
+}
+.dark-mode #bingo-section {
+	background-color: #141414;
+	border-color: #000;
 }
 
 .tooltip {
@@ -99,6 +114,9 @@ html, body {
 	background-color: rgba(0,0,0,.9);
 	font-family: settingsFont;
 	text-align: center;
+}
+.dark-mode #tooltip {
+	border-color: #401b95;
 }
 
 .tooltiptext {
@@ -146,6 +164,10 @@ html, body {
 	border: 4px solid #FFF;
 	border-radius: 5px;
 }
+.dark-mode #bingo-box {
+	border-color: #000;
+	/*filter: invert(); */
+}
 
 #bingo, #hidden-bingo {
 	height: 100%;
@@ -163,6 +185,9 @@ html, body {
 	-ms-user-select: none;
 	user-select: none;
 }
+.dark-mode #bingo {
+	background-color: #393939;
+}
 
 #hidden-bingo {
 	display: none;
@@ -178,6 +203,11 @@ html, body {
 .hidden #bingo {
 	display: none;
 }
+.dark-mode #hidden-bingo {
+	background-image: url("polished_blackstone_bricks.png");
+	/* background-image: url("black_concrete.png"); */
+	background-size: 128px 128px;
+}
 
 #bingo td {
 	cursor: pointer;
@@ -192,6 +222,12 @@ html, body {
 	color: #000;
 	padding: 5px 5px 5px 7px;
 	position: relative;
+}
+.dark-mode #bingo td {
+	background-color: #393939;
+	border-color: #141414;
+	box-shadow: inset 3px 3px 3px 0px rgba(0,0,0,0.25);
+	color: #D8D8D8;
 }
 
 /* Card colours */
@@ -210,10 +246,8 @@ html, body {
 #bingo td:hover {
 	background-color: #EBEBEB;
 }
-
 #bingo tr td.greensquare {
 	background:#CAFF70;
-	color: #000;
 }
 #bingo tr td.greensquare:hover {
 	background:#A2CD5A;
@@ -224,7 +258,6 @@ html, body {
 
 #bingo tr td.redsquare {
 	background:#FE6A50;
-	color: #000;
 }
 #bingo tr td.redsquare:hover {
 	background:#CD5B45;
@@ -235,7 +268,6 @@ html, body {
 
 #bingo tr td.bluesquare {
 	background:#9ae8ff;
-	color: #000;
 }
 #bingo tr td.bluesquare:hover {
 	background:#57d9ff;
@@ -246,7 +278,6 @@ html, body {
 
 #bingo tr td.yellowsquare {
 	background: #F2F210;
-	color: #000;
 }
 #bingo tr td.yellowsquare:hover {
 	background:#D9D90B;
@@ -257,7 +288,6 @@ html, body {
 
 #bingo tr td.pinksquare {
 	background:#00D69B;
-	color: #000;
 }
 #bingo tr td.pinksquare:hover {
 	background:#00AD82;
@@ -268,7 +298,6 @@ html, body {
 
 #bingo tr td.brownsquare {
 	background:#D5AE85;
-	color: #000;
 }
 #bingo tr td.brownsquare:hover {
 	background:#C8955F;
@@ -279,6 +308,21 @@ html, body {
 
 /* End Card colours */
 
+.dark-mode #bingo .greensquare {
+	background:#708F30;
+}
+.dark-mode #bingo .redsquare {
+	background:#733327;
+}
+.dark-mode #bingo .bluesquare {
+	background:#4d7480;
+}
+.dark-mode #bingo td:hover {
+	background-color: #303030;
+	filter: brightness(70%) contrast(140%);
+	color: #FFF;
+}
+
 #hidden-table {
 	font-family: settingsFont;
 	background-color: white;
@@ -287,6 +331,11 @@ html, body {
 	padding: 20px;
 	text-align: center;
 	font-size: 0.75em;
+}
+.dark-mode #hidden-table {
+	background-color: #141414;
+	color: #D8D8D8;
+	border-color: #303030;
 }
 
 #hidden-table p {
@@ -353,6 +402,25 @@ html, body {
 }
 .button:hover {
 	background-image: url("button-background-blue.png");
+}
+
+/*.dark-mode .button {
+	border-color: #000;
+	background-color: #303030;
+	color: #D8D8D8;
+	background-image: none;
+}
+.dark-mode .button:hover {
+	background-image: none;
+	background-color: #141430;
+}
+.dark-mode .button:hover,
+.dark-mode .slider-holder:hover .slider-text {
+	color: #DDD767;
+}*/
+.dark-mode .button,
+.dark-mode .slider-holder {
+	filter: brightness(70%) contrast(140%);
 }
 
 .button,
@@ -504,6 +572,10 @@ body.streamer-mode {
 	font-size:0.75em;
 	text-align: center;
 }
+.dark-mode #rules-section {
+	background-color: #141414;
+	border-color: #000;
+}
 
 #rules-section p,
 #rules-section h2,
@@ -558,3 +630,25 @@ body.streamer-mode {
 }
 
 /* End Export Popup */
+
+/* Dark Mode */
+body.dark-mode {
+	background-color: #090909;
+	color: #D8D8D8;
+}
+.dark-mode .tooltipQ,
+.dark-mode select,
+.dark-mode button:not(.button),
+.dark-mode input[type="text"] {
+	filter: invert();
+}
+.dark-mode a {
+	color: lightblue;
+}
+.dark-mode a:active {
+	color: orange;
+}
+.dark-mode a:visited {
+	color: rebeccapurple;
+}
+/* End Dark Mode */
