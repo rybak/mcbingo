@@ -96,7 +96,7 @@ function forAllSeedsAndDifficulties(prepGoal, sheetConsumer, stopCondition)
 {
 	let version = findReallyLatestVersion();
 	debugLog("Testing version:");
-	debugLog(version.toString());
+	debugLog(JSON.stringify(version));
 	let listOfGoalsByDifficulty = version.goals;
 	debugLog("List of all goals:");
 	for (var difficulty = 0; difficulty < listOfGoalsByDifficulty.length; difficulty++)
