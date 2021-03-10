@@ -141,7 +141,7 @@ var generator_v3 = function(layout, difficulty, bingoList)
 					 * "infrequency" value stores how less likely a goal is. E.g. infrequency == 25
 					 * makes a goal 1/25 (4%) as likely as a goal with infrequency == 1.
 					 */
-					//console.log("cont = false, infrequency check failed");
+					//consoleLog("cont = false, infrequency check failed");
 
 					// If we failed the RNG roll, continue the do while loop and try again
 					continue GoalGen;
@@ -152,7 +152,7 @@ var generator_v3 = function(layout, difficulty, bingoList)
 			if (currentSheet.some(r=> r.name === goalCandidate.name))
 			{
 				// Get a new goal
-				console.log(goalCandidate.name + " already on the board");
+				consoleLog(goalCandidate.name + " already on the board");
 				continue GoalGen;
 			}
 
@@ -165,14 +165,14 @@ var generator_v3 = function(layout, difficulty, bingoList)
 					// If the tag isn't in our list of tags yet, add it and set it to 0
 					if (typeof tagCount[tag.name] == 'undefined')
 					{
-						//console.log(tag.name + " not collected yet, adding");
+						//consoleLog(tag.name + " not collected yet, adding");
 						tagCount[tag.name] = 0;
 					}
 					// Otherwise check if it's higher than it should be
 					else if (tagCount[tag.name] >= tag.max[difficulty - 1])
 					{
 						// If we've got too many of that tag, get a new goal
-						console.log(tag.name + " max reached with " + tagCount[tag.name] + " on the board");
+						consoleLog(tag.name + " max reached with " + tagCount[tag.name] + " on the board");
 						continue GoalGen;
 					}
 				}
@@ -189,7 +189,7 @@ var generator_v3 = function(layout, difficulty, bingoList)
 							// If both goals have the same tag
 							if (currentSheet[indexes[z]].tags.some(r=> r.line == false && goalCandidate.tags.some(s=> r.name === s.name)))
 							{
-								console.log("Cannot be on same line: " + goalCandidate.name + " and " + currentSheet[indexes[z]].name);
+								consoleLog("Cannot be on same line: " + goalCandidate.name + " and " + currentSheet[indexes[z]].name);
 								continue GoalGen;
 							}
 						}
@@ -204,7 +204,7 @@ var generator_v3 = function(layout, difficulty, bingoList)
 				if (antisynergys.some(r=> goalCandidate.antisynergy.includes(r)))
 				{
 					// If it is, get a new goal
-					console.log("antisynergy for: " + goalCandidate.name);
+					consoleLog("antisynergy for: " + goalCandidate.name);
 					continue GoalGen;
 				}
 			}
@@ -214,7 +214,7 @@ var generator_v3 = function(layout, difficulty, bingoList)
 				if (reactants.some(r=> goalCandidate.catalyst.includes(r)))
 				{
 					// If it is, get a new goal
-					console.log("reactants for: " + goalCandidate.name);
+					consoleLog("reactants for: " + goalCandidate.name);
 					continue GoalGen;
 				}
 			}
@@ -225,7 +225,7 @@ var generator_v3 = function(layout, difficulty, bingoList)
 				if (catalysts.some(r=> goalCandidate.reactant.includes(r)))
 				{
 					// If it is, get a new goal
-					console.log("catalyst for: " + goalCandidate.name);
+					consoleLog("catalyst for: " + goalCandidate.name);
 					continue GoalGen;
 				}
 			}
@@ -244,7 +244,7 @@ var generator_v3 = function(layout, difficulty, bingoList)
 				sheetLayout[i]--;
 				failSafe = 0;
 
-				console.log("failSafe occurred on " + (i + 1) + "/25, reducing goal difficulty to " + sheetLayout[i]);
+				consoleLog("failSafe occurred on " + (i + 1) + "/25, reducing goal difficulty to " + sheetLayout[i]);
 
 				continue GoalGen;
 			}
@@ -258,7 +258,7 @@ var generator_v3 = function(layout, difficulty, bingoList)
 		for (const tag of goalCandidate.tags)
 		{
 			tagCount[tag.name]++;
-			//console.log(tagCount);
+			//consoleLog(tagCount);
 		}
 		// Add it's antisynergys onto the list of antisynergys
 		if (typeof goalCandidate.antisynergy !== 'undefined')
@@ -295,7 +295,7 @@ var generator_v3 = function(layout, difficulty, bingoList)
 
 	//shuffle(currentSheet); Old Sheet Shuffling, now shuffling indexes pre-generation instead
 
-	console.log("Completed sheet generation");
+	consoleLog("Completed sheet generation");
 
 	return currentSheet;
 }
@@ -334,4 +334,12 @@ function shuffle(a) {
 		[a[i], a[j]] = [a[j], a[i]];
 	}
 	return a;
+}
+
+function consoleLog(msg)
+{
+	if (!TESTS)
+	{
+		console.log(msg);
+	}
 }

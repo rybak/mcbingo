@@ -50,6 +50,7 @@ const TOOLTIP_TEXT_ATTR_NAME = "data-tooltiptext";
 const TOOLTIP_IMAGE_ATTR_NAME = "data-tooltipimg";
 const COLOUR_COUNT_SETTING_NAME = "bingoColourCount";
 const COLOUR_SYMBOLS_SETTING_NAME = "bingoColourSymbols";
+var TESTS;
 
 // Dropdown menu handling.
 $(document).click(function(event) {
@@ -68,6 +69,10 @@ $(document).click(function(event) {
 
 $(document).ready(function()
 {
+	if (TESTS)
+	{
+		return;
+	}
 	// Set the background to a random image
 	document.body.style.backgroundImage = "url('Backgrounds/background" + (Math.floor(Math.random() * 10) + 1) + ".jpg')";
 
