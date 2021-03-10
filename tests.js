@@ -81,12 +81,20 @@ function shortTest()
 	} else {
 		var rare = [];
 		debugLog("Goal frequencies:");
+		var max = 0;
+		var maxName = "";
 		for (let name in goalsCounters)
 		{
-			debugLog("  \"" + name + "\" = " + goalsCounters[name]);
-			if (goalsCounters[name] < 10)
+			let c = goalsCounters[name];
+			debugLog("  \"" + name + "\" = " + c);
+			if (c < 10)
 			{
 				rare.push(name);
+			}
+			if (c > max)
+			{
+				maxName = name;
+				max = c;
 			}
 		}
 		debugLog("Rarest goals:");
@@ -94,6 +102,7 @@ function shortTest()
 		{
 			debugLog("  \"" + name + "\" = " + goalsCounters[name]);
 		}
+		debugLog("Most common goal: \"" + maxName + "\" = " + max);
 	}
 
 }
