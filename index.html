@@ -109,6 +109,17 @@
 					</div>
 				</div>
 			</div>
+			<div class="buttons-row">
+				<p>Enter a substring on the right, open console (F12), press the button:</p>
+			</div>
+			<div class="buttons-row">
+				<button style="padding: 0 1em;" class="button" onclick="checkSeeds();" id="seeds">Check seeds for </button>
+				<input id="goal-substring" type="text" value="Snowball" />
+				<span> goals (Open console first)</span>
+			</div>
+			<div id="debug" class="buttons-row">
+			Log:<br>
+			</div>
 		</section>
 		<a class="stream-exit-text" href="#" onclick='toggleStreamerMode();event.preventDefault();'>Exit Streamer Mode</a>
 		<a class="stream-exit-text" href="#" onclick='popoutBingoCard();'>Pop out Bingo Card</a>

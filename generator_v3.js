@@ -132,6 +132,7 @@ var generator_v3 = function(layout, difficulty, bingoList)
 					cont = false;
 				}
 			}
+			// FIXME: is this a bug? Maybe it should be: var tagCount = [0, 0, 0, 0, 0];
 			var tagCount = [1, 1, 1, 1, 1];
 
 			for (var z=0; z <= 24; z++)
@@ -150,7 +151,7 @@ var generator_v3 = function(layout, difficulty, bingoList)
 						&& currentSheet[z].antisynergy.some(r=> goalCandidate.antisynergy.includes(r)))
 					{
 						// If it is get a new goal
-						console.log("antisynergy between: " + goalCandidate.name + " and " + currentSheet[z].name);
+						//console.log("antisynergy between: " + goalCandidate.name + " and " + currentSheet[z].name);
 						cont = false;
 					}
 					// Check if the goal generated is a catalyst for anything already on the sheet
@@ -158,7 +159,7 @@ var generator_v3 = function(layout, difficulty, bingoList)
 						&& currentSheet[z].reactant.some(r=> goalCandidate.catalyst.includes(r)))
 					{
 						// If it is get a new goal
-						console.log("catalyst/reactant between: " + goalCandidate.name + " and " + currentSheet[z].name);
+						//console.log("catalyst/reactant between: " + goalCandidate.name + " and " + currentSheet[z].name);
 						cont = false;
 					}
 					// Check if the goal generated is a reactant for anything already on the sheet
@@ -166,7 +167,7 @@ var generator_v3 = function(layout, difficulty, bingoList)
 						&& currentSheet[z].catalyst.some(r=> goalCandidate.reactant.includes(r)))
 					{
 						// If it is get a new goal
-						console.log("reactant/catalyst between: " + goalCandidate.name + " and " + currentSheet[z].name);
+						//console.log("reactant/catalyst between: " + goalCandidate.name + " and " + currentSheet[z].name);
 						cont = false;
 					}
 					
@@ -196,7 +197,7 @@ var generator_v3 = function(layout, difficulty, bingoList)
 				{
 					if (tagCount[x] >= goalCandidate.tags[x].max[difficulty - 1])
 					{
-						console.log(goalCandidate.tags[x].name + " max reached with " + tagCount[x] + " on the board");
+						//console.log(goalCandidate.tags[x].name + " max reached with " + tagCount[x] + " on the board");
 						cont = false;
 					}
 					
@@ -242,7 +243,7 @@ var generator_v3 = function(layout, difficulty, bingoList)
 	
 	shuffle(currentSheet);
 
-	console.log("Completed sheet generation");
+	//console.log("Completed sheet generation");
 
 	return currentSheet;
 }
