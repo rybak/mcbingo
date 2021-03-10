@@ -334,6 +334,7 @@ function generateNewSheet()
 
 	var result = VERSION.generator(LAYOUT, DIFFICULTY, VERSION.goals);
 
+	const needle = $("#goal-substring").val();
 	forEachSquare((i, square) => {
 		var goal = result[i];
 
@@ -342,6 +343,9 @@ function generateNewSheet()
 
 		square.attr(TOOLTIP_TEXT_ATTR_NAME, goal.tooltiptext || "");
 		square.attr(TOOLTIP_IMAGE_ATTR_NAME, goal.tooltipimg || "");
+		if (goal.name.includes(needle)) {
+			setSquareColor(square, "redsquare");
+		}
 	});
 }
 
@@ -364,6 +368,47 @@ function newSeed(remakeSheet)
 	if (remakeSheet)
 	{
 		generateNewSheet();
+	}
+}
+
+function debugLog(msg, isAlert)
+{
+	console.log(msg);
+	$("#debug").append(msg + "<br>");
+	if (isAlert)
+		alert(msg);
+
+}
+
+function checkSeeds()
+{
+	var found = false;
+	const needle = $("#goal-substring").val();
+	debugLog("Looking for '" + needle + "' in all seeds", false);
+	for (var i = 10000; i < 100000; i++)
+	{
+		const seedCandidate = i.toString();
+		Math.seedrandom(seedCandidate);
+		var result = VERSION.generator(LAYOUT, DIFFICULTY, VERSION.goals);
+		for (const goal of result)
+		{
+			if (goal.name.includes(needle)) {
+				found = true;
+				debugLog("Seed " + seedCandidate + " has " + needle, true);
+				SEED = seedCandidate;
+				pushNewUrl();
+				generateNewSheet();
+			}
+		}
+		if (i % 10000 == 0) {
+			debugLog("  CHECKED UP TO SEED = " + i, false);
+		}
+		if (found) {
+			break;
+		}
+	}
+	if (!found) {
+		debugLog("Could not find any seed which has '" + needle + "' in goals", true);
 	}
 }
 
