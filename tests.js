@@ -49,6 +49,7 @@ function dictAllValuesPosivite(dict)
 
 function test(isLong)
 {
+	const startTime = Date.now();
 	let goalsCounters = {};
 	let allFound = false;
 	forAllSeedsAndDifficulties(
@@ -90,6 +91,8 @@ function test(isLong)
 	for (const pair of sortedGoals) {
 		debugLog("  \"" + pair[0] + "\" = " + pair[1]);
 	}
+	const finishTime = Date.now();
+	debugLog("Test took " + (finishTime - startTime) + " ms");
 }
 
 function forAllSeedsAndDifficulties(prepGoal, sheetConsumer, stopCondition)
