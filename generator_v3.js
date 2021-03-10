@@ -112,7 +112,7 @@ var generator_v3 = function(layout, difficulty, bingoList)
 
 		do
 		{
-			//console.log("Starting do while loop: " + counter);
+			//consoleLog("Starting do while loop: " + counter);
 			counter++;
 			var cont = true;
 			failSafe++;
@@ -120,7 +120,7 @@ var generator_v3 = function(layout, difficulty, bingoList)
 			var rng = Math.floor((Math.random() * bingoList[sheetLayout[i]].length - 1) + 1);
 			var goalCandidate = bingoList[sheetLayout[i]][rng];
 
-			//console.log(bingoList[sheetLayout[i]][rng].name + " tags: " + bingoList[sheetLayout[i]][rng].tags);
+			//consoleLog(bingoList[sheetLayout[i]][rng].name + " tags: " + bingoList[sheetLayout[i]][rng].tags);
 
 			// Check if the goal has a frequency modifier
 			if (typeof goalCandidate.frequency !== 'undefined')
@@ -128,7 +128,7 @@ var generator_v3 = function(layout, difficulty, bingoList)
 				// If it does, make it less likely to appear based on the value of frequency
 				if (Math.floor((Math.random() * goalCandidate.frequency) + 1) < goalCandidate.frequency)
 				{
-					//console.log("cont = false, frequency check failed");
+					//consoleLog("cont = false, frequency check failed");
 					cont = false;
 				}
 			}
@@ -140,7 +140,7 @@ var generator_v3 = function(layout, difficulty, bingoList)
 				if (currentSheet[z].name == goalCandidate.name)
 				{
 					// If it is get a new goal
-					//console.log("cont = false, same goal on sheet");
+					//consoleLog("cont = false, same goal on sheet");
 					cont = false;
 				}
 				// Check if the goal generated has any anti synergy with anything already on the sheet
@@ -148,7 +148,7 @@ var generator_v3 = function(layout, difficulty, bingoList)
 					&& currentSheet[z].antisynergy.some(r=> goalCandidate.antisynergy.includes(r)))
 				{
 					// If it is get a new goal
-					console.log("antisynergy between: " + goalCandidate.name + " and " + currentSheet[z].name);
+					consoleLog("antisynergy between: " + goalCandidate.name + " and " + currentSheet[z].name);
 					cont = false;
 				}
 				// Check if the goal generated is a catalyst for anything already on the sheet
@@ -156,7 +156,7 @@ var generator_v3 = function(layout, difficulty, bingoList)
 					&& currentSheet[z].reactant.some(r=> goalCandidate.catalyst.includes(r)))
 				{
 					// If it is get a new goal
-					console.log("catalyst/reactant between: " + goalCandidate.name + " and " + currentSheet[z].name);
+					consoleLog("catalyst/reactant between: " + goalCandidate.name + " and " + currentSheet[z].name);
 					cont = false;
 				}
 				// Check if the goal generated is a reactant for anything already on the sheet
@@ -164,7 +164,7 @@ var generator_v3 = function(layout, difficulty, bingoList)
 					&& currentSheet[z].catalyst.some(r=> goalCandidate.reactant.includes(r)))
 				{
 					// If it is get a new goal
-					console.log("reactant/catalyst between: " + goalCandidate.name + " and " + currentSheet[z].name);
+					consoleLog("reactant/catalyst between: " + goalCandidate.name + " and " + currentSheet[z].name);
 					cont = false;
 				}
 
@@ -192,7 +192,7 @@ var generator_v3 = function(layout, difficulty, bingoList)
 				{
 					if (tagCount[x] >= goalCandidate.tags[x].max[difficulty - 1])
 					{
-						console.log(goalCandidate.tags[x].name + " max reached with " + tagCount[x] + " on the board");
+						consoleLog(goalCandidate.tags[x].name + " max reached with " + tagCount[x] + " on the board");
 						cont = false;
 					}
 
@@ -214,7 +214,7 @@ var generator_v3 = function(layout, difficulty, bingoList)
 				sheetLayout[i]--;
 				failSafe = 0;
 
-				console.log("failSafe occurred on " + (i + 1) + "/25, reducing goal difficulty to " + sheetLayout[i]);
+				consoleLog("failSafe occurred on " + (i + 1) + "/25, reducing goal difficulty to " + sheetLayout[i]);
 			}
 		}
 		while (!cont);
@@ -233,12 +233,12 @@ var generator_v3 = function(layout, difficulty, bingoList)
 		// TESTING PURPOSES
 		//goal.difficulty = sheetLayout[i];
 
-		//console.log(goal);
+		//consoleLog(goal);
 	}
 
 	shuffle(currentSheet);
 
-	console.log("Completed sheet generation");
+	consoleLog("Completed sheet generation");
 
 	return currentSheet;
 }
@@ -249,4 +249,12 @@ function shuffle(a) {
         [a[i], a[j]] = [a[j], a[i]];
     }
     return a;
+}
+
+function consoleLog(msg)
+{
+	if (!TESTS)
+	{
+		consoleLog(msg);
+	}
 }

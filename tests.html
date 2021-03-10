@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>mcbingo tests</title>
+		<link rel="stylesheet" href="bingo.css" type="text/css" />
+		
+		<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+		<script src="generator_v1.js"></script>
+		<script src="generator_v2.js"></script>
+		<script src="generator_v3.js"></script>
+		<script src="goals_v1.js"></script>
+		<script src="goals_v2.js"></script>
+		<script src="goals_v3.js"></script>
+		<script src="goals_v4.js"></script>
+		<script>
+			var TESTS = true;
+		</script>
+		<script src="bingo.js"></script>
+		<script src="tests.js"></script>
+		
+		<link rel="icon" type="image/png" href="icon.png" />
+	</head>
+	<body>
+		<section id="nav_section">
+			<h1>mcbingo tests</h1>
+		</section>
+		<section id="bingo-section">
+			<div class="buttons-row">
+				<button onclick='shortTest();event.preventDefault();' class="button">Short test</button>
+			</div>
+			<div id="tests-log" style="font-family:monospace;">
+			</div>
+		</section>
+	</body>
+</html>
