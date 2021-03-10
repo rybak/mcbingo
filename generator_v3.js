@@ -255,6 +255,6 @@ function consoleLog(msg)
 {
 	if (!TESTS)
 	{
-		consoleLog(msg);
+		console.log(msg);
 	}
 }
