@@ -29,6 +29,26 @@ function findReallyLatestVersion()
 
 function shortTest()
 {
+	test(false);
+}
+
+function longTest()
+{
+	test(true);
+}
+
+function dictEveryValue(dict, predicate)
+{
+	return Object.values(dict).every(val => predicate(val));
+}
+
+function dictAllValuesPosivite(dict)
+{
+	return dictEveryValue(dict, val => val > 0);
+}
+
+function test(isLong)
+{
 	let goalsCounters = {};
 	let allFound = false;
 	forAllSeedsAndDifficulties(
@@ -42,15 +62,18 @@ function shortTest()
 			}
 		},
 		(seed) => {
-			allFound = Object.values(goalsCounters).every(counter => counter > 0);
-			if (allFound)
-			{
+			if (isLong) {
+				return false;
+			}
+			allFound = dictAllValuesPosivite(goalsCounters);
+			if (allFound) {
 				debugAlert("Found all goals. Had to check up to seed " + seed + ".");
 				return true;
 			}
 			return false;
 		}
 	);
+	allFound = dictAllValuesPosivite(goalsCounters);
 	if (!allFound)
 	{
 		debugAlert("Could not find some of the goals");
@@ -61,31 +84,11 @@ function shortTest()
 				debugLog("Could not find goal '" + name + "' in any of the seeds");
 			}
 		}
-	} else {
-		var rare = [];
-		debugLog("Goal frequencies:");
-		var max = 0;
-		var maxName = "";
-		for (let name in goalsCounters)
-		{
-			let c = goalsCounters[name];
-			debugLog("  \"" + name + "\" = " + c);
-			if (c < 10)
-			{
-				rare.push(name);
-			}
-			if (c > max)
-			{
-				maxName = name;
-				max = c;
-			}
-		}
-		debugLog("Rarest goals:");
-		for (const name of rare)
-		{
-			debugLog("  \"" + name + "\" = " + goalsCounters[name]);
-		}
-		debugLog("Most common goal: \"" + maxName + "\" = " + max);
+	}
+	debugLog("Goal frequencies:");
+	const sortedGoals = sortDictionary(goalsCounters);
+	for (const pair of sortedGoals) {
+		debugLog("  \"" + pair[0] + "\" = " + pair[1]);
 	}
 }
 
@@ -123,6 +126,21 @@ function forAllSeedsAndDifficulties(prepGoal, sheetConsumer, stopCondition)
 			break;
 		}
 	}
+}
+
+// returns a list of pairs
+// https://stackoverflow.com/a/25500462/1083697
+function sortDictionary(dict)
+{
+	// Create items array
+	var items = Object.keys(dict).map(key => [key, dict[key]]);
+
+	// Sort the array based on the second element
+	items.sort(function(a, b) {
+		return a[1] - b[1];
+	});
+
+	return items;
 }
 
 function getGoalNameWithoutRanges(rawGoalName)
