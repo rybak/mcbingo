@@ -50,23 +50,23 @@ function dictAllValuesPosivite(dict)
 function test(isLong)
 {
 	const startTime = Date.now();
-	let goalsCounters = {};
+	let goalCounters = {};
 	let allFound = false;
 	forAllSeedsAndDifficulties(
 		goal => {
-			goalsCounters[goal.name] = 0;
+			goalCounters[goal.name] = 0;
 		},
-		result => {
+		(result, difficulty) => {
 			for (const goal of result)
 			{
-				goalsCounters[goal.name]++;
+				goalCounters[goal.name]++;
 			}
 		},
 		(seed) => {
 			if (isLong) {
 				return false;
 			}
-			allFound = dictAllValuesPosivite(goalsCounters);
+			allFound = dictAllValuesPosivite(goalCounters);
 			if (allFound) {
 				debugAlert("Found all goals. Had to check up to seed " + seed + ".");
 				return true;
@@ -74,20 +74,20 @@ function test(isLong)
 			return false;
 		}
 	);
-	allFound = dictAllValuesPosivite(goalsCounters);
+	allFound = dictAllValuesPosivite(goalCounters);
 	if (!allFound)
 	{
 		debugAlert("Could not find some of the goals");
-		for (let name in goalsCounters)
+		for (let name in goalCounters)
 		{
-			if (goalsCounters[name] == 0)
+			if (goalCounters[name] == 0)
 			{
 				debugLog("Could not find goal '" + name + "' in any of the seeds");
 			}
 		}
 	}
 	debugLog("Goal frequencies:");
-	const sortedGoals = sortDictionary(goalsCounters);
+	const sortedGoals = sortDictionary(goalCounters);
 	for (const pair of sortedGoals) {
 		debugLog("  \"" + pair[0] + "\" = " + pair[1]);
 	}
@@ -120,7 +120,7 @@ function forAllSeedsAndDifficulties(prepGoal, sheetConsumer, stopCondition)
 			let urlDifficulty = difficulty + 1;
 			Math.seedrandom(seed.toString()); // must seed the random before every generation
 			let result = version.generator("random", urlDifficulty, listOfGoalsByDifficulty);
-			sheetConsumer(result);
+			sheetConsumer(result, difficulty);
 		}
 		if (seed % 10000 == 0) {
 			debugLog("CHECKED UP TO SEED = " + seed);
