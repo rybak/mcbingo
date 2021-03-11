@@ -95,6 +95,47 @@ function test(isLong)
 	debugLog("Test took " + (finishTime - startTime) + " ms");
 }
 
+function countGoals()
+{
+	const diffCount = 5;
+	const startTime = Date.now();
+	let goalCounters = [];
+	for (var i = 0; i < diffCount; i++)
+	{
+		goalCounters[i] = {};
+	}
+	let allFound = false;
+	forAllSeedsAndDifficulties(
+		goal => {
+			for (var i = 0; i < diffCount; i++)
+			{
+				goalCounters[i][goal.name] = 0;
+			}
+		},
+		(result, difficulty) => {
+			for (const goal of result)
+			{
+				goalCounters[difficulty][goal.name]++;
+			}
+		},
+		(seed) => false
+	);
+	debugLog("Goal frequencies:");
+	for (var i = 0; i < diffCount; i++)
+	{
+		debugLog("Difficulty: " + (i + 1));
+		const sortedGoals = sortDictionary(goalCounters[i]);
+		for (const pair of sortedGoals) {
+			if (pair[1] > 0) {
+				debugLog("  \"" + pair[0] + "\" = " + pair[1]);
+			}
+		}
+		debugLog("");
+	}
+	const finishTime = Date.now();
+	debugLog("Test took " + (finishTime - startTime) + " ms");
+}
+
 function forAllSeedsAndDifficulties(prepGoal, sheetConsumer, stopCondition)
 {
 	let version = findReallyLatestVersion();
