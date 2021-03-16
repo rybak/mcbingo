@@ -121,7 +121,6 @@ html, body {
 }
 
 #tooltiptext {
-	border-radius: 5px;
 	text-shadow: 2px 2px #000;
 	margin-bottom: 40px;
 	font-size: 12px;
