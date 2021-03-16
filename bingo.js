@@ -526,12 +526,21 @@ function setSquareColor(square, colorClass)
 	square.addClass(colorClass);
 }
 
-function copySeedToClipboard(id)
+function copySeedToClipboard(id, event)
 {
 	var id = "#"+id;
 	if (navigator.clipboard)
 	{
-		navigator.clipboard.writeText($(id).val()).catch(err => {
+		navigator.clipboard.writeText($(id).val()).then(ignored => {
+			const x = event.pageX;
+			const y = event.pageY;
+			$("#copiedTooltip").css({left:x, top: y})
+				.css("display", "block")
+				.delay(100)
+				.fadeOut(1000, () => {
+					$(this).hide().fadeIn(0);
+				});
+		}, err => {
     			console.error('Async: Could not copy text: ', err);
     			alert("Failed to copy seed to clipboard :/");
 		});
