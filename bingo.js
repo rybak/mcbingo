@@ -69,8 +69,8 @@ $(document).ready(function()
 	// Set the background to a random image
 	document.body.style.backgroundImage = "url('Backgrounds/background" + (Math.floor(Math.random() * 10) + 1) + ".jpg')";
 
-	// By default hide the tooltip
-	$("#tooltip").hide();
+	// By default hide the tooltips
+	$(".tooltip").hide();
 
 	$("#export").hide();
 
@@ -81,14 +81,15 @@ $(document).ready(function()
 		setSquareColor(square, nextColour(square));
 	});
 
+	const goalTooltip = $("#goalTooltip");
 	// On hovering a goal square
 	$("#bingo td img").hover(function()
 	{
-		$("#tooltip").show();
+		goalTooltip.show();
 	},function()
 	{
 		// After hovering, hide the tooltip again
-		$("#tooltip").hide();
+		goalTooltip.hide();
 	});
 
 	// Move the tooltip with the mouse
@@ -96,8 +97,8 @@ $(document).ready(function()
 	{
 		var x = e.pageX + 2;
 		var y = e.pageY + 2;
-		var width = $("#tooltip").outerWidth() + 25;
-		var height = $("#tooltip").height() + 50;
+		var width = goalTooltip.outerWidth() + 25;
+		var height = goalTooltip.height() + 50;
 		var maxX = $(window).width() + window.pageXOffset;
 		var maxY = $(window).height() + window.pageYOffset;
 		if (x + width > maxX) {
@@ -106,13 +107,13 @@ $(document).ready(function()
 		if (y + height > maxY) {
 			y = y - height;
 		}
-		$("#tooltip").css({left:x, top:y});
+		goalTooltip.css({left:x, top:y});
 	});
 
 	$("#bingo td").hover(function(e)
 	{
 		hoveredSquare = $(this);
-		// Fill the #tooltip with the content from the goal
+		// Fill the #goalTooltip with the content from the goal
 		var tooltipImg = hoveredSquare.attr(TOOLTIP_IMAGE_ATTR_NAME);
 		var tooltipText = hoveredSquare.attr(TOOLTIP_TEXT_ATTR_NAME);
 		$("#tooltipimg").attr('src', tooltipImg);
