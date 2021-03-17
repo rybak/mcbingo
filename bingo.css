@@ -71,6 +71,7 @@ html, body {
 }
 
 #copiedTooltip {
+	margin: 0 10px;
 	padding: 0 5px 5px;
 }
 
@@ -94,6 +95,7 @@ html, body {
 	margin: 20px;
 	display: inline-block;
 	border: 2px solid purple;
+	border-radius: 5px;
 	background-color: rgba(0,0,0,.9);
 	font-family: settingsFont;
 	text-align: center;
@@ -302,6 +304,7 @@ html, body {
 }
 
 #hidden-table-seed button {
+	margin-top: 10px;
 	width: 200px;
 }
 
@@ -365,6 +368,12 @@ html, body {
 	font-family: settingsFont;
 	text-align: center;
 }
+.small-button {
+	padding: 3px;
+	height: auto;
+	font-size: 1em;
+}
+
 .versions-button {
 	width: 50px;
 }

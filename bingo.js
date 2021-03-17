@@ -587,14 +587,7 @@ function copySeedToClipboard(id, event)
 	if (navigator.clipboard)
 	{
 		navigator.clipboard.writeText($(id).val()).then(ignored => {
-			const x = event.pageX;
-			const y = event.pageY;
-			$("#copiedTooltip").css({left:x, top: y})
-				.css("display", "block")
-				.delay(100)
-				.fadeOut(1000, () => {
-					$(this).hide().fadeIn(0);
-				});
+			showCopiedTooltip(event);
 		}, err => {
     			console.error('Async: Could not copy text: ', err);
     			alert("Failed to copy seed to clipboard :/");
@@ -611,6 +604,10 @@ function copySeedToClipboard(id, event)
 			{
 				alert("Failed to copy seed to clipboard :/");
 			}
+			else
+			{
+				showCopiedTooltip(event);
+			}
 		}
 		catch (err)
 		{
@@ -620,6 +617,18 @@ function copySeedToClipboard(id, event)
 		// Deselect
 		$(id).blur();
 	}
+}
+
+function showCopiedTooltip(event)
+{
+	const x = event.target.offsetLeft + event.target.offsetWidth;
+	const y = event.target.offsetTop;
+	$("#copiedTooltip").css({left:x, top: y})
+		.css("display", "block")
+		.delay(100)
+		.fadeOut(1000, () => {
+			$(this).hide().fadeIn(0);
+		});
 }
 
 function createGoalExport()
