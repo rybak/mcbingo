@@ -162,6 +162,13 @@ $(document).ready(function()
 		changeVersion($(this).val());
 	});
 
+	$(".dialog-holder").hide();
+	$(".dialog-close").click(function(event) {
+		$(event.target).closest(".dialog-holder").hide();
+	});
+	$("#options-toggle-button").click(function() {
+		$("#options-dialog").toggle();
+	});
 
 	window.onpopstate = function(event)
 	{
