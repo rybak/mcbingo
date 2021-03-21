@@ -114,7 +114,10 @@
 							<input type="range" id="difficultyRange" value="3" max="5" min="1" class="slider" oninput="changeDifficulty(this.value);"/>
 							<p class="slider-text difficulty-text"></p>
 						</div>
-						<button class="button options-button" onclick='toggleDarkMode();'>Dark Mode</button>
+						<div class="dropdown-holder">
+							<button class="button options-button dropdown-button" id="colourThemeDropdown-toggle-button">Colour Theme...</button>
+							<div id="colourTheme-dropdown-main" class="dropdown"><!-- see fillColourThemeSelection --></div>
+						</div>
 					</div>
 				</div>
 			</div>

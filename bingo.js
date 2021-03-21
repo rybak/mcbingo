@@ -16,7 +16,19 @@ var COLOUR_SELECTIONS = [
 var COLOURCOUNT = 1; // used as an index in COLOUR_SELECTIONS and COLOURCOUNTTEXT
 var COLOURCOUNTTEXT = [ "Green only", "Blue, Green, Red", "6 Colours"];
 var COLOURSYMBOLS = false;
-var DARK_MODE = false;
+
+const COLOUR_THEMES = {
+	light: {
+		className: "light",
+		uiName: "Light"
+	},
+	dark: {
+		className: "dark",
+		uiName: "Dark"
+	}
+};
+var COLOUR_THEME = COLOUR_THEMES["light"];
+
 const NEVER_HIGHLIGHT_CLASS_NAME = "greensquare";
 
 var hoveredSquare;
@@ -51,7 +63,7 @@ const TOOLTIP_TEXT_ATTR_NAME = "data-tooltiptext";
 const TOOLTIP_IMAGE_ATTR_NAME = "data-tooltipimg";
 const COLOUR_COUNT_SETTING_NAME = "bingoColourCount";
 const COLOUR_SYMBOLS_SETTING_NAME = "bingoColourSymbols";
-const DARK_MODE_SETTING_NAME = "bingoDarkMode";
+const COLOUR_THEME_SETTING_NAME = "bingoColourTheme";
 
 // Dropdown menu handling.
 $(document).click(function(event) {
@@ -163,7 +175,7 @@ $(document).ready(function()
 	$("#version_selection").change(function() {
 		changeVersion($(this).val());
 	});
-
+	fillColourThemeSelection();
 
 	window.onpopstate = function(event)
 	{
@@ -285,13 +297,14 @@ function getSettingsFromLocalStorage()
 		// if not stored, then just use the default
 		updateColourCount();
 	}
-	const darkModeSetting = localStorage.getItem(DARK_MODE_SETTING_NAME);
-	if (darkModeSetting != null)
+
+	const colourThemeSetting = localStorage.getItem(COLOUR_THEME_SETTING_NAME);
+	if (colourThemeSetting != null && colourThemeSetting in COLOUR_THEMES)
 	{
-		DARK_MODE = darkModeSetting == "true";
-		updateDarkMode();
+		COLOUR_THEME = colourThemeSetting;
+		updateColourTheme();
 	}
-	console.log("load  DARK_MODE = " + DARK_MODE);
+	console.log("load colourThemeSetting = " + COLOUR_THEME);
 }
 
 /*
@@ -492,25 +505,28 @@ function toggleColourSymbols(value)
 	pushNewLocalSetting(COLOUR_SYMBOLS_SETTING_NAME, COLOURSYMBOLS);	
 }
 
-function updateDarkMode()
+function updateColourTheme()
 {
-	const darkModeClassName = "dark-mode";
+	console.log("Changing colourTheme to " + COLOUR_THEME);
 	const body = $("body");
-	if (DARK_MODE)
+	for (let id in COLOUR_THEMES)
 	{
-		body.addClass(darkModeClassName);
+		body.removeClass(COLOUR_THEMES[id].className);
 	}
-	else
-	{
-		body.removeClass(darkModeClassName);
-	}
+	body.addClass(COLOUR_THEME);
 }
 
-function toggleDarkMode()
+function changeColourTheme(val)
 {
-	DARK_MODE = !DARK_MODE;
-	updateDarkMode();
-	pushNewLocalSetting(DARK_MODE_SETTING_NAME, DARK_MODE);
+	console.log("Trying to change colourTheme to " + val);
+	if (!(val in COLOUR_THEMES))
+	{
+		return;
+	}
+	COLOUR_THEME = val;
+	updateColourTheme();
+	pushNewLocalSetting(COLOUR_THEME_SETTING_NAME, COLOUR_THEME);
+	console.log("Saved " + COLOUR_THEME_SETTING_NAME + " = " + COLOUR_THEME);
 }
 
 function pushNewUrl()
@@ -596,6 +612,20 @@ function fillVersionSelection()
 			changeVersion(value.id);
 		});
 	});
+}
+
+function fillColourThemeSelection()
+{
+	for (let id in COLOUR_THEMES)
+	{
+		const theme = COLOUR_THEMES[id];
+		const button = $('<button class="button options-button"></button>');
+		$("#colourTheme-dropdown-main").append(button);
+		button.html(theme.uiName);
+		button.click(function() {
+			changeColourTheme(theme.className);
+		});
+	}
 }
 
 function setSquareColor(square, colorClass)

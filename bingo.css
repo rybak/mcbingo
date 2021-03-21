@@ -36,7 +36,7 @@ html, body {
 	border-bottom: 5px solid;
 	margin-bottom: 10px;
 }
-.dark-mode #nav_section {
+.dark #nav_section {
 	background-color: #141414;
 	border-color: #000;
 	box-shadow: 0px 10px 5px -10px #303030;
@@ -57,7 +57,7 @@ html, body {
 	-webkit-text-stroke-width: 1px;
 	-webkit-text-stroke-color: black;
 }
-.dark-mode #nav_section h1 {
+.dark #nav_section h1 {
 	color: #D8D8D8;
 }
 
@@ -88,7 +88,7 @@ html, body {
 	text-align:center;
 	display:none;
 }
-.dark-mode .stream-exit-text {
+.dark .stream-exit-text {
 	color: #FFF;
 }
 
@@ -100,7 +100,7 @@ html, body {
 	background-color: #EBEBEB;
 	border: 4px solid;
 }
-.dark-mode #bingo-section {
+.dark #bingo-section {
 	background-color: #141414;
 	border-color: #000;
 }
@@ -115,7 +115,7 @@ html, body {
 	font-family: settingsFont;
 	text-align: center;
 }
-.dark-mode #tooltip {
+.dark #tooltip {
 	border-color: #401b95;
 }
 
@@ -164,7 +164,7 @@ html, body {
 	border: 4px solid #FFF;
 	border-radius: 5px;
 }
-.dark-mode #bingo-box {
+.dark #bingo-box {
 	border-color: #000;
 	/*filter: invert(); */
 }
@@ -185,7 +185,7 @@ html, body {
 	-ms-user-select: none;
 	user-select: none;
 }
-.dark-mode #bingo {
+.dark #bingo {
 	background-color: #393939;
 }
 
@@ -203,7 +203,7 @@ html, body {
 .hidden #bingo {
 	display: none;
 }
-.dark-mode #hidden-bingo {
+.dark #hidden-bingo {
 	background-image: url("polished_blackstone_bricks.png");
 	/* background-image: url("black_concrete.png"); */
 	background-size: 128px 128px;
@@ -223,7 +223,7 @@ html, body {
 	padding: 5px 5px 5px 7px;
 	position: relative;
 }
-.dark-mode #bingo td {
+.dark #bingo td {
 	background-color: #393939;
 	border-color: #141414;
 	box-shadow: inset 3px 3px 3px 0px rgba(0,0,0,0.25);
@@ -308,16 +308,16 @@ html, body {
 
 /* End Card colours */
 
-.dark-mode #bingo .greensquare {
+.dark #bingo .greensquare {
 	background:#708F30;
 }
-.dark-mode #bingo .redsquare {
+.dark #bingo .redsquare {
 	background:#733327;
 }
-.dark-mode #bingo .bluesquare {
+.dark #bingo .bluesquare {
 	background:#4d7480;
 }
-.dark-mode #bingo td:hover {
+.dark #bingo td:hover {
 	background-color: #303030;
 	filter: brightness(70%) contrast(140%);
 	color: #FFF;
@@ -332,7 +332,7 @@ html, body {
 	text-align: center;
 	font-size: 0.75em;
 }
-.dark-mode #hidden-table {
+.dark #hidden-table {
 	background-color: #141414;
 	color: #D8D8D8;
 	border-color: #303030;
@@ -404,22 +404,22 @@ html, body {
 	background-image: url("button-background-blue.png");
 }
 
-/*.dark-mode .button {
+/*.dark .button {
 	border-color: #000;
 	background-color: #303030;
 	color: #D8D8D8;
 	background-image: none;
 }
-.dark-mode .button:hover {
+.dark .button:hover {
 	background-image: none;
 	background-color: #141430;
 }
-.dark-mode .button:hover,
-.dark-mode .slider-holder:hover .slider-text {
+.dark .button:hover,
+.dark .slider-holder:hover .slider-text {
 	color: #DDD767;
 }*/
-.dark-mode .button,
-.dark-mode .slider-holder {
+.dark .button,
+.dark .slider-holder {
 	filter: brightness(70%) contrast(140%);
 }
 
@@ -572,7 +572,7 @@ body.streamer-mode {
 	font-size:0.75em;
 	text-align: center;
 }
-.dark-mode #rules-section {
+.dark #rules-section {
 	background-color: #141414;
 	border-color: #000;
 }
@@ -632,23 +632,23 @@ body.streamer-mode {
 /* End Export Popup */
 
 /* Dark Mode */
-body.dark-mode {
+body.dark {
 	background-color: #090909;
 	color: #D8D8D8;
 }
-.dark-mode .tooltipQ,
-.dark-mode select,
-.dark-mode button:not(.button),
-.dark-mode input[type="text"] {
+.dark .tooltipQ,
+.dark select,
+.dark button:not(.button),
+.dark input[type="text"] {
 	filter: invert();
 }
-.dark-mode a {
+.dark a {
 	color: lightblue;
 }
-.dark-mode a:active {
+.dark a:active {
 	color: orange;
 }
-.dark-mode a:visited {
+.dark a:visited {
 	color: rebeccapurple;
 }
 /* End Dark Mode */
