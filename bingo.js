@@ -155,6 +155,10 @@ $(document).ready(function()
 		{
 			setSquareColor(hoveredSquare, SHORTCUT_COLOURS[e.which]);
 		}
+		if (e.keyCode == 27 /* Esc */)
+		{
+			$(".dialog-holder").hide();
+		}
 	});
 
 	fillVersionSelection();
