@@ -567,6 +567,7 @@ body.streamer-mode {
 	border: 2px black solid;
 	border-radius: 5px;
 	padding: 1rem;
+	font-family: settingsFont;
 }
 
 .dialog .button,
@@ -578,7 +579,6 @@ body.streamer-mode {
 
 .dialog h3 {
 	font-size: 1.5rem;
-	font-family: settingsFont;
 	/*text-align: center;*/
 	margin-bottom: 1.4rem;
 }
