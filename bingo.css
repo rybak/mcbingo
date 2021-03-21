@@ -404,10 +404,7 @@ html, body {
 	width: 300px;
 }
 
-.options-button,
-.slider-holder,
-.slider,
-.slider-text {
+.options-button {
 	width: 250px;
 }
 
@@ -571,26 +568,35 @@ body.streamer-mode {
 	position: fixed;
 	top: 150px;
 	margin: auto;
-	width: 400px;
 
 	background: url(stone-tile.png) #FFF;
 	border: 2px black solid;
 	border-radius: 5px;
-	padding: 10px;
+	padding: 1rem;
+}
+
+.dialog .button,
+.dialog .slider-holder,
+.dialog .slider,
+.dialog .slider-text {
+	width: 16rem;
 }
 
 .dialog h3 {
-	font-size: 2rem;
+	font-size: 1.5rem;
 	font-family: settingsFont;
-	text-align: center;
+	/*text-align: center;*/
 	margin-bottom: 1.4rem;
+	color: #FFF;
 }
 
 .dialog .dialog-close {
 	position: absolute;
-	top: 10px;
-	right: 10px;
-	width: 50px;
+	top: 1rem;
+	right: 1rem;
+	height: 2rem;
+	width: 2rem;
+	font-size: 1rem;
 }
 /* End Dialog Styling */
 
