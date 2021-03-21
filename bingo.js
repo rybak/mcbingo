@@ -531,7 +531,9 @@ function toggleColourSymbols()
 
 function updateDarkMode()
 {
+	const smoothTransitionClassName = "smooth-transition";
 	const body = $("body");
+	body.addClass(smoothTransitionClassName);
 	if (DARK_MODE)
 	{
 		body.addClass(DARK_MODE_CLASS_NAME);
@@ -541,6 +543,9 @@ function updateDarkMode()
 		body.removeClass(DARK_MODE_CLASS_NAME);
 	}
 	$(".dark-mode-button").text(DARK_MODE ? "Light Mode" : "Dark Mode");
+	delayed(1000, () => {
+		body.removeClass(smoothTransitionClassName);
+	});
 }
 
 function toggleDarkMode()
@@ -700,6 +705,17 @@ function createGoalExport()
 function hideGoalExport()
 {
 	$("#export").hide();
+}
+
+// https://stackoverflow.com/a/39914235/1083697
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function delayed(t, f)
+{
+	await sleep(t);
+	f();
 }
 
 // Made this a function for readability and ease of use
