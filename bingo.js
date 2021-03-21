@@ -51,16 +51,24 @@ const TOOLTIP_IMAGE_ATTR_NAME = "data-tooltipimg";
 const COLOUR_COUNT_SETTING_NAME = "bingoColourCount";
 const COLOUR_SYMBOLS_SETTING_NAME = "bingoColourSymbols";
 
-// Dropdown menu handling.
+// Dropdown menu and dialog handling.
 $(document).click(function(event) {
 	if (event.target.className.includes('dropdown-button')) {
 		// if a button was clicked, toggle nearby dropdown
 		$(event.target).siblings('.dropdown').toggle(100);
-	} else {
-		if (!$(event.target).closest(".dropdown-holder").length) {
-			// Hide if click was anywhere BUT on a dropdown menu
-			$('.dropdown').each(function() {
-				$(this).hide(100);
+		return;
+	}
+	if (!$(event.target).closest(".dropdown-holder").length) {
+		// Hide if click was anywhere BUT on a dropdown menu
+		$('.dropdown').each(function() {
+			$(this).hide(100);
+		});
+	}
+	if (!$(event.target).closest(".dialog").length) {
+		if (event.target.id != "options-toggle-button") {
+			// Hide if click was anywhere BUT on a dialog menu
+			$('.dialog').each(function() {
+				$(this).hide();
 			});
 		}
 	}
