@@ -565,6 +565,7 @@ body.streamer-mode {
 
 	background: url(stone-tile.png) #FFF;
 	background: url(dirt-tile.png) #FFF;
+	background: #FFF;
 	border: 2px black solid;
 	border-radius: 5px;
 	padding: 1rem;
@@ -582,7 +583,6 @@ body.streamer-mode {
 	font-family: settingsFont;
 	/*text-align: center;*/
 	margin-bottom: 1.4rem;
-	color: #FFF;
 }
 
 .dialog .dialog-close {
