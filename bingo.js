@@ -157,7 +157,7 @@ $(document).ready(function()
 		}
 		if (e.keyCode == 27 /* Esc */)
 		{
-			$(".dialog-holder").hide();
+			$(".dialog").hide();
 		}
 	});
 
@@ -166,9 +166,9 @@ $(document).ready(function()
 		changeVersion($(this).val());
 	});
 
-	$(".dialog-holder").hide();
+	$(".dialog").hide();
 	$(".dialog-close").click(function(event) {
-		$(event.target).closest(".dialog-holder").hide();
+		$(event.target).closest(".dialog").hide();
 	});
 	$("#options-toggle-button").click(function() {
 		$("#options-dialog").toggle();

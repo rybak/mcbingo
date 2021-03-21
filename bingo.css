@@ -553,21 +553,15 @@ body.streamer-mode {
 /* End Rules And Bottom */
 
 /* Dialog Styling */
-.dialog-holder {
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
+.dialog {
+	/* https://stackoverflow.com/a/39636815/1083697 */
 	position: absolute;
-	height: 100%;
-	width: 100%;
-}
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
 
-.dialog-holder .dialog {
 	display: flex;
 	flex-direction: column;
-	position: fixed;
-	top: 150px;
-	margin: auto;
 
 	background: url(stone-tile.png) #FFF;
 	border: 2px black solid;
