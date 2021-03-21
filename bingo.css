@@ -564,9 +564,7 @@ body.streamer-mode {
 	flex-direction: column;
 
 	background: #FFF;
-	border: 2px black solid;
-	border-radius: 5px;
-	padding: 1rem;
+	border: 2px solid #000;
 	font-family: settingsFont;
 }
 
@@ -579,14 +577,14 @@ body.streamer-mode {
 
 .dialog h3 {
 	font-size: 1.5rem;
-	/*text-align: center;*/
-	margin-bottom: 1.4rem;
+	text-align: center;
+	margin: 0.5rem;
 }
 
 .dialog .dialog-close {
 	position: absolute;
-	top: 1rem;
-	right: 1rem;
+	top: -2px; /* 2px == width of the dialog border */
+	right: -2px;
 	height: 2rem;
 	width: 2rem;
 	font-size: 1rem;
