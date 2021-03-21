@@ -64,13 +64,13 @@ $(document).click(function(event) {
 			$(this).hide(100);
 		});
 	}
+	if ($(event.target).hasClass("dialog")) {
+		hideDialog();
+	}
 	if (!$(event.target).closest(".dialog").length) {
 		if (event.target.id != "options-toggle-button") {
 			// Hide if click was anywhere BUT on a dialog menu
-			$('.dialog').each(function() {
-				$(this).hide();
-			});
-			$("#page-dimmer").hide();
+			hideDialog();
 		}
 	}
 });
@@ -166,8 +166,7 @@ $(document).ready(function()
 		}
 		if (e.keyCode == 27 /* Esc */)
 		{
-			$(".dialog").toggle();
-			$("#page-dimmer").toggle();
+			toggleDialog();
 		}
 	});
 
@@ -176,14 +175,11 @@ $(document).ready(function()
 		changeVersion($(this).val());
 	});
 
-	$(".dialog").hide();
 	$(".dialog-close").click(function(event) {
-		$(event.target).closest(".dialog").hide();
-		$("#page-dimmer").hide();
+		hideDialog();
 	});
 	$("#options-toggle-button").click(function() {
-		$("#options-dialog").toggle();
-		$("#page-dimmer").toggle();
+		showDialog();
 	});
 
 	window.onpopstate = function(event)
@@ -193,6 +189,19 @@ $(document).ready(function()
 
 	loadSettings();
 });
+
+function toggleDialog()
+{
+	$("#bingo-box").toggleClass("show-dialog");
+}
+function showDialog()
+{
+	$("#bingo-box").addClass("show-dialog");
+}
+function hideDialog()
+{
+	$("#bingo-box").removeClass("show-dialog");
+}
 
 function getColourClass(square)
 {
