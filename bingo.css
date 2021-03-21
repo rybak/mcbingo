@@ -205,7 +205,6 @@ html, body {
 }
 .dark #hidden-bingo {
 	background-image: url("polished_blackstone_bricks.png");
-	/* background-image: url("black_concrete.png"); */
 	background-size: 128px 128px;
 }
 
@@ -651,4 +650,11 @@ body.dark {
 .dark a:visited {
 	color: rebeccapurple;
 }
+* {
+	/* for smooth transition between colour themes */
+	transition-property: background-color, color, filter;
+	transition-duration: 0.4s;
+	transition-timing-function: ease-in;
+}
+
 /* End Dark Mode */
