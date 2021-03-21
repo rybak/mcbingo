@@ -70,6 +70,7 @@ $(document).click(function(event) {
 			$('.dialog').each(function() {
 				$(this).hide();
 			});
+			$("#page-dimmer").hide();
 		}
 	}
 });
@@ -165,7 +166,8 @@ $(document).ready(function()
 		}
 		if (e.keyCode == 27 /* Esc */)
 		{
-			$(".dialog").hide();
+			$(".dialog").toggle();
+			$("#page-dimmer").toggle();
 		}
 	});
 
@@ -177,9 +179,11 @@ $(document).ready(function()
 	$(".dialog").hide();
 	$(".dialog-close").click(function(event) {
 		$(event.target).closest(".dialog").hide();
+		$("#page-dimmer").hide();
 	});
 	$("#options-toggle-button").click(function() {
 		$("#options-dialog").toggle();
+		$("#page-dimmer").toggle();
 	});
 
 	window.onpopstate = function(event)
