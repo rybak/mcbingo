@@ -573,6 +573,11 @@ body.streamer-mode {
 	background: rgba(0,0,0,0.4);
 	font-family: settingsFont;
 }
+
+.hidden.show-dialog #hidden-bingo {
+	filter: blur(0.5em);
+}
+
 .show-dialog .dialog {
 	display: flex;
 }
