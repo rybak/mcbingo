@@ -576,6 +576,11 @@ body.streamer-mode {
 .show-dialog .dialog {
 	display: flex;
 }
+.dialog-item-group {
+	display: flex;
+	flex-direction: column;
+	gap: 0.3em;
+}
 
 .dialog .button,
 .dialog .slider-holder,
