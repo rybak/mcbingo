@@ -564,7 +564,18 @@ body.streamer-mode {
 /* Dialog Styling */
 #options-toggle-button {
 	width: 50px;
+	position: relative;
 }
+#options-toggle-button:after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: url(gear.webp) no-repeat;
+	background-size: 35px 35px;
+	background-position: 5px 5px;
+}
+
 .dialog {
 	position: absolute;
 	top: 0;
