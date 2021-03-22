@@ -398,6 +398,11 @@ html, body {
 	font-size: 1em;
 }
 
+.slider,
+.slider-text {
+	width: 100%;
+}
+
 .versions-button {
 	width: 50px;
 }
@@ -488,8 +493,11 @@ input[type=range]::-ms-thumb:active {
 }
 
 .new-seed-button {
-	width: 382px;
+	width: 322px;
 	text-decoration: none;
+}
+.buttons-row .slider-holder {
+	width: 250px;
 }
 
 /* End Buttons Styling */
@@ -554,6 +562,9 @@ body.streamer-mode {
 /* End Rules And Bottom */
 
 /* Dialog Styling */
+#options-toggle-button {
+	width: 50px;
+}
 .dialog {
 	position: absolute;
 	top: 0;
@@ -588,9 +599,7 @@ body.streamer-mode {
 }
 
 .dialog .button,
-.dialog .slider-holder,
-.dialog .slider,
-.dialog .slider-text {
+.dialog .slider-holder {
 	width: 16rem;
 }
 
