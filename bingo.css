@@ -650,8 +650,9 @@ body.dark {
 .dark a:visited {
 	color: rebeccapurple;
 }
-* {
-	/* for smooth transition between colour themes */
+
+/* for smooth transition between colour themes */
+.smooth-transition * {
 	transition-property: background-color, color, filter;
 	transition-duration: 0.4s;
 	transition-timing-function: ease-in;

@@ -507,13 +507,29 @@ function toggleColourSymbols(value)
 
 function updateColourTheme()
 {
+	const smoothTransitionClassName = "smooth-transition";
 	console.log("Changing colourTheme to " + COLOUR_THEME);
 	const body = $("body");
+	body.addClass(smoothTransitionClassName);
 	for (let id in COLOUR_THEMES)
 	{
 		body.removeClass(COLOUR_THEMES[id].className);
 	}
 	body.addClass(COLOUR_THEME);
+	delayed(1000, () => {
+		body.removeClass(smoothTransitionClassName);
+	});
+}
+
+// https://stackoverflow.com/a/39914235/1083697
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function delayed(t, f)
+{
+	await sleep(t);
+	f();
 }
 
 function changeColourTheme(val)
