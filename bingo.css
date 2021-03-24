@@ -330,8 +330,9 @@ html, body {
 
 /* End Bingo Card  */
 
-/* Buttons */
+/* UI controls */
 
+/** Buttons **/
 .buttons-row {
 	margin-top: 10px;
 	display: flex;
@@ -344,36 +345,6 @@ html, body {
 	border: 2px solid #000;
 	background-color: #6F6F6F;
 	background-image: url("button-background.png");
-}
-
-.button::after,
-.button::before {
-	content: '';
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	top: 0;
-}
-
-.button::after {
-	border: 3px solid #00000045;
-	border-top: unset;
-	border-left: unset;
-}
-
-.button::before {
-	border: 3px solid #ffffff6e;
-	border-bottom: unset;
-	border-right: unset;
-}
-
-.button:hover,
-.slider-holder:hover .slider-text {
-	color: #FFF787;
-}
-.button:hover {
-	background-image: url("button-background-blue.png");
 }
 
 .button,
@@ -396,23 +367,42 @@ html, body {
 	font-size: 1em;
 }
 
-.versions-button {
-	width: 50px;
+.button:hover,
+.slider-holder:hover .slider-text {
+	color: #FFF787;
 }
-.version-button {
-	width: 300px;
-}
-
-.options-button,
-.slider-holder,
-.slider,
-.slider-text {
-	width: 250px;
+.button:hover {
+	background-image: url("button-background-blue.png");
 }
 
+/*** Button border and insets ***/
+.button::after,
+.button::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	top: 0;
+}
+
+.button::after {
+	border: 3px solid #00000045;
+	border-top: unset;
+	border-left: unset;
+}
+
+.button::before {
+	border: 3px solid #ffffff6e;
+	border-bottom: unset;
+	border-right: unset;
+}
+
+/** Dropdowns **/
 .dropdown-holder  {
 	position: relative;
 }
+
 .dropdown {
 	display: none;
 	position: absolute;
@@ -421,6 +411,7 @@ html, body {
 	z-index: 1;
 }
 
+/** Sliders **/
 .slider-holder {
 	background-image: url("slider-background.png");
 	position: relative;
@@ -489,12 +480,27 @@ input[type=range]::-ms-thumb:active {
 	background-image: url("button-background-blue.png");
 }
 
+/** Individual controls' sizes **/
+.versions-button {
+	width: 50px;
+}
+.version-button {
+	width: 300px;
+}
+
 .new-seed-button {
 	width: 382px;
 	text-decoration: none;
 }
 
-/* End Buttons */
+.options-button,
+.slider-holder,
+.slider,
+.slider-text {
+	width: 250px;
+}
+
+/* End UI controls */
 
 /* Streamer Mode */
 .streamer-mode #nav_section,
