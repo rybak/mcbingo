@@ -773,6 +773,7 @@ select, input[type="text"] {
 	align-items: stretch;
 	text-align: center;
 	padding: 4px;
+	z-index: 75;
 }
 
 #export textarea {
