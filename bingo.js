@@ -193,7 +193,7 @@ $(document).ready(function()
 
 	window.onpopstate = function(event)
 	{
-		loadSettings();
+		getSettingsFromURL();
 	};
 
 	loadSettings();
