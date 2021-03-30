@@ -198,6 +198,7 @@ $(document).ready(function()
 	};
 
 	loadSettings();
+	showOptionsMenu();
 });
 
 function toggleOptionsMenu()
