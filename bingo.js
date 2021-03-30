@@ -89,6 +89,7 @@ $(document).ready(function()
 {
 	// Set the background to a random image
 	document.body.className += "bg" + (Math.floor(Math.random() * 10) + 1);
+	randomizeSplash();
 
 	// On clicking a goal square
 	const bingoSquares = $("#bingo td");
@@ -172,6 +173,10 @@ $(document).ready(function()
 		if (e.keyCode == 27 /* Esc */)
 		{
 			toggleOptionsMenu();
+		}
+		if (e.keyCode == 82)
+		{
+			randomizeSplash();
 		}
 	});
 
@@ -718,6 +723,36 @@ async function delayed(t, f)
 function getRandomInt(min, max)
 {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+const SPLASHES = [
+	"BINGO!",
+
+	"Oh look, a jungle!",
+	"Will I ever find Lapis?",
+	"How long can this take?",
+	"In just 8 hours :-)",
+	"Oh my cod!",
+
+	"28 Nametags, 7 Nautilus Shells",
+	"8 Nautilus Shells before a Nametag",
+
+	"READ THE PINS",
+	"Villages are hard to find",
+	"Normal spawn rates for mobs!",
+	"just find a village, lol",
+	"Any bingo enthusiasts in chat?",
+	"Good ol' secondary diagonal",
+
+	"racetime.gg",
+	"#minecraft-bingo",
+
+	"¯\\_(ツ)_/¯",
+];
+function randomizeSplash()
+{
+	var splash = SPLASHES[Math.floor(Math.random() * SPLASHES.length)];
+	$(".splash").text(splash);
 }
 
 // https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams
